@@ -17,7 +17,11 @@ The packer template is in `template.json`. In the `variables` section you can se
 * `base_box_ver`  - the base box version.
 * `golang_ver` - the Golang version which will be installed - `x.x.x`.
 * `skip_add` - weather to skip adding the base box to vagrant. If the box is not already added packer will fail.
-* `build_name` - used internally to set parameters of the packer builder. Changing it will change the path of the output artifact, so you will need to adjust parameter ins other files like the `box_url` in `.kitchen.yml`.
+* `build_name` - used internally to set parameters of the packer builder. Changing it will change the path of the output artifact, so you will need to adjust parameter in other files like the `box_url` in `.kitchen.yml`.
+
+Run `packer validate template.json` - to make basic template validation.
+
+Run `packer build template.json` - to build the Vagrant box with packer.
 
 ## Testing with KitchenCI
 
