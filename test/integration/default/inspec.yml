@@ -1,0 +1,5 @@
+---
+name: default
+title: Golang installation
+summary: Test suite for basic check of Golang installation
+version: 0.1.0

@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "build_name": "ubuntu-1604-golang",
+    "base_box_path": "slavrd/xenial64",
+    "base_box_name": "slavrd/xenial64",
+    "base_box_ver": "16.04.6",
+    "golang_ver": "1.12.9",
+    "skip_add": "true"
+  },
+  "builders": [
+    {
+        "name": "ubuntu-1604-golang",
+        "communicator": "ssh",
+        "source_path": "{{user `base_box_path`}}",
+        "box_name": "{{user `base_box_name`}}",
+        "box_version": "{{user `base_box_ver` }}",
+        "provider": "virtualbox",
+        "add_force": true,
+        "skip_add": "{{user `skip_add`}}",
+        "type": "vagrant"
+    }
+  ],
+  "provisioners": [
+    {
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash {{.Path}} {{user `golang_ver`}} linux amd64",
+      "script": "scripts/provision.sh",
+      "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
+      "type": "shell"
+    },
+    {
+      "execute_command": "echo 'vagrant' | {{.Vars}} sudo -E -S bash {{.Path}}",
+      "script": "scripts/cleanup_final.sh",
+      "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
+      "type": "shell"
+    }
+  ]
+}

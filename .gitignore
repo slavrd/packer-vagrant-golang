@@ -1,0 +1,5 @@
+.kitchen/
+output-*/
+.ruby-version
+Gemfile.lock
+inspec.lock
