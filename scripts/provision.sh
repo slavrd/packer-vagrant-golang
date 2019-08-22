@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
 # Installs Golang and some basic tools
 
-# Arguments:
-# 1 (Required) - golang version to install X.X.X
-# 2 (Required) - OS e.g linux, darwin, widnows
-# 3 (Required) - Architecture e.g. 386, amd64
-
-if [ $# != 3 ]; then
-    echo "usage $0 <golang_version> <OS> <ARCH>"
-    exit 1
-fi
-
-export GOLANG_FILE="go${1}.${2}-${3}.tar.gz"
+[ "${GOLANG_FILE}" ] || GOLANG_FILE="go1.12.9.linux-amd64.tar.gz"
 
 # install basic tools
 
-PKGS="git vim curl"
+PKGS="git vim curl jq"
 
 which $PKGS || {
     sudo apt-get update
