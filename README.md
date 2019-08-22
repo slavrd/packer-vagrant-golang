@@ -12,10 +12,8 @@ A packer project that creates a Vagrant box with Golang and some basic tools ins
 
 The packer template is in `template.json`. In the `variables` section you can set parameters to customize the build. Help on setting, overriding variables in packer can be found [here](https://www.packer.io/docs/templates/user-variables.html#setting-variables).
 
-* `base_box_path` - path to the base box to use. Usually vagrant cloud style `<user\box>`.
-* `base_vox_name` - the name of the base box to use. Same as the `base_box_path` when using a box from vagrant cloud.
-* `base_box_ver`  - the base box version.
-* `golang_ver` - the Golang version which will be installed - `x.x.x`.
+* `base_box`  - the base box to use. It needs to be a box published to Vagrant cloud so named `user/box`
+* `golang_file` - the Golang file name to download and install e.g. `go1.12.9.linux-amd64.tar.gz`.
 * `skip_add` - weather to skip adding the base box to vagrant. If the box is not already added packer will fail.
 * `build_name` - used internally to set parameters of the packer builder. Changing it will change the path of the output artifact, so you will need to adjust parameter in other files like the `box_url` in `.kitchen.yml`.
 
@@ -47,16 +45,16 @@ The project includes a script `scripts\vagrant_cloud_upload.sh` to upload the bo
 
 You need to set up Vagrant cloud access by setting the `VAGRANT_CLOUD_TOKEN` environment variable to your user token.
 
-script usage: `scripts\vagrant_cloud_upload.sh <box_name> <box_version> <local_box_path>`
+script usage: `scripts\vagrant_cloud_upload.sh [box_version]`, box_version will default to `yy.mm.dd` if not set.
 
 ## Example
 
 ```bash
 packer validate template.json # basic template validation
 
-packer build -var 'golang_ver=1.12.9' template.json   # build the box with packer, setting the golang_ver variable.
+packer build -var 'golang_file=go1.12.9.linux-amd64.tar.gz' template.json   # build the box with packer, setting the golang_ver variable.
 
 bundle exec kitchen test # run tests
 
-scripts\vagrant_cloud_upload.sh slavrd/xenial64-golang 1.12.9 output-ubuntu-1604-golang/package.box # upload to Vagrant cloud
+scripts/vagrant_cloud_upload.sh 1.12.9 # upload to Vagrant cloud
 ```
