@@ -2,24 +2,26 @@
 # Simply a wrapper for "vagrant cloud publish command"
 # uploads a virtualbox box package to vagrant cloud and releases it.
 
-#usage <vc_box_name> <vc_box_ver> <local_box_path>
+BOX="slavrd/xenial64-golang"
+BOX_PATH="output-ubuntu-1604-golang/package.box"
+BOX_DESC="An Ubuntu Xenial64 box with golang and some basic tools installed"
+
+#usage <vc_box_ver>
 
 # check prerequsites - passed parameters and vagrant installation
-if [ "$#" != 3 ]; then
-    echo "usage: $0 <vc_box_name> <vc_box_ver> <local_box_path>"
-    exit 1
-fi
+if [ "$1" ]; then
+    BOX_VER=${1}
+else
+    BOX_VER=$(date +%y.%m.%d)
+fi 
 
 which vagrant > /dev/null || {
     echo "vagrant is not installed. Visit www.vagrantup.com and install it."
     exit 1
 }
 
-BOX="$1"
-BOX_VER="$2"
-BOX_PATH="$3"
-
 vagrant cloud publish \
-    --description "An Ubuntu Xenial64 box with golang and some basic tools installed" \
+    -s "${BOX_DESC}" \
+    --description "${BOX_DESC}" \
     --force --release \
-    "$BOX" "$BOX_VER" virtualbox "$BOX_PATH"
+    ${BOX} ${BOX_VER} virtualbox ${BOX_PATH}
