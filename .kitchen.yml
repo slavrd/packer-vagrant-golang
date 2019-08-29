@@ -9,7 +9,7 @@ platforms:
   - name: ubuntu-1604-golang-virtualbox
     driver:
       box: ubuntu-1604-golang-virtualbox-test
-      box_url: file:///<%= ENV[PWD] =>/output-ubuntu-1604-golang/package.box
+      box_url: file:///<%= ENV['PWD'] %>/output-ubuntu-1604-golang/package.box
       provider: virtualbox
 
 verifier:
