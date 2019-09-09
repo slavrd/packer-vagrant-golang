@@ -39,6 +39,8 @@ Running Kitchen tests:
 * `bundle exec kitchen destroy` - will destroy the test environment.
 * `bundle exec kitchen test` - will perform the above steps with a single command.
 
+**Caveat** - Kitchen will not remove the box from vagrant after running `kitchen destroy`. For the moment need to clean up manually by running `vagrant box remove ubuntu-1604-golang-virtualbox-test`
+
 ## Uploading to Vagrant cloud
 
 The project includes a script `scripts\vagrant_cloud_upload.sh` to upload the box to Vagrant cloud. It is basically a wrapper for the `vagrant cloud publish` [command](https://www.vagrantup.com/docs/cli/cloud.html#cloud-publish) so you can use it instead.
