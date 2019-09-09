@@ -9,4 +9,8 @@ control 'golang_check' do
     its('content') { should match %r|PATH=\$PATH:/usr/local/go/bin| }
   end
 
+  describe file('/home/vagrant/.profile') do
+    its('content') { should match %r|PATH=.*:/home/vagrant/go/bin.*| }
+  end
+
 end
