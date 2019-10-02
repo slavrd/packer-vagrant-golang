@@ -6,10 +6,10 @@ provisioner:
   name: shell
 
 platforms:
-  - name: ubuntu-1604-golang-virtualbox
+  - name: ubuntu-golang-virtualbox
     driver:
-      box: ubuntu-1604-golang-virtualbox-test
-      box_url: file:///<%= ENV['PWD'] %>/output-ubuntu-1604-golang/package.box
+      box: ubuntu-golang-virtualbox-test
+      box_url: file:///<%= ENV['PWD'] %>/output-ubuntu-golang/package.box
       provider: virtualbox
 
 verifier:

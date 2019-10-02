@@ -2,9 +2,9 @@
 # Simply a wrapper for "vagrant cloud publish command"
 # uploads a virtualbox box package to vagrant cloud and releases it.
 
-BOX="slavrd/xenial64-golang"
-BOX_PATH="output-ubuntu-1604-golang/package.box"
-BOX_DESC="An Ubuntu Xenial64 box with golang and some basic tools installed"
+BOX="slavrd/golang"
+BOX_PATH="output-ubuntu-golang/package.box"
+BOX_DESC="An Ubuntu box with golang and some basic tools installed"
 
 #usage <vc_box_ver>
 
