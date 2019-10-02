@@ -1,6 +1,6 @@
 {
   "variables": {
-    "build_name": "ubuntu-1604-golang",
+    "build_name": "ubuntu-golang",
     "base_box": "slavrd/bionic64",
     "golang_file": "go1.13.1.linux-amd64.tar.gz",
     "skip_add": "true"
