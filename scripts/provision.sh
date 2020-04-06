@@ -31,3 +31,8 @@ cat /etc/profile.d/golang_config.sh 2>/dev/null | grep 'export PATH=' || {
 cat /home/vagrant/.profile 2>/dev/null | grep "PATH=\$PATH:$(go env GOPATH)/bin" || {
     echo "export PATH=\$PATH:$(go env GOPATH)/bin" | sudo tee -a /home/vagrant/.profile
 }
+
+# setup GOPATH for vagrant user
+cat /home/vagrant/.profile 2>/dev/null | grep "export GOPATH=" || {
+    echo "export GOPATH=/home/vagrant/go" | sudo tee -a /home/vagrant/.profile
+}
