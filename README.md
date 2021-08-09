@@ -4,24 +4,23 @@ A packer project that creates a Vagrant box with Golang and some basic tools ins
 
 ## Prerequisites
 
-* Install [packer](https://www.packer.io/downloads.html).
+* Install [packer](https://www.packer.io/downloads.html) version `~> 1.7`.
 * Install [vagrant](https://www.vagrantup.com/downloads.html).
-* Ruby version ~> 2.5.1 for running KitchenCI test.
+* Ruby version `~> 2.5.6` for running KitchenCI test.
 
 ## Building the box with Packer
 
-The packer template is in `template.<packer version>.json` file e.g. `template.v1.6.json`. Use the appropriate template for the version of packer you have installed.
+The packer template is in `template.pkr.hcl file e.g. `template.v1.6.json`. Use the appropriate template for the version of packer you have installed.
 
 In the `variables` section you can set parameters to customize the build. Help on setting, overriding variables in packer can be found [here](https://www.packer.io/docs/templates/user-variables.html#setting-variables).
 
 * `base_box`  - the base box to use. It needs to be a box published to Vagrant cloud so named `user/box`
 * `golang_file` - the Golang file name to download and install e.g. `go1.12.9.linux-amd64.tar.gz`.
 * `skip_add` - weather to skip adding the base box to vagrant. If the box is not already added packer will fail.
-* `build_name` - used internally to set parameters of the packer builder. Changing it will change the path of the output artifact, so you will need to adjust parameter in other files like the `box_url` in `.kitchen.yml`.
 
-Run `packer validate template.v1.6.json` - to make basic template validation.
+Run `packer validate template.pkr.hcl` - to make basic template validation.
 
-Run `packer build template.v1.6.json` - to build the Vagrant box with packer.
+Run `packer build template.pkr.hcl` - to build the Vagrant box with packer.
 
 ## Testing with KitchenCI
 
