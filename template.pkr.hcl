@@ -1,12 +1,12 @@
 
 variable "base_box" {
   type    = string
-  default = "slavrd/bionic64"
+  default = "ubuntu/focal64"
 }
 
 variable "golang_file" {
   type    = string
-  default = "go1.15.2.linux-amd64.tar.gz"
+  default = "go1.16.6.linux-amd64.tar.gz"
 }
 
 variable "skip_add" {
