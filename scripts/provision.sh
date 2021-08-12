@@ -5,7 +5,7 @@
 
 # install basic tools
 
-PKGS="git vim curl jq"
+PKGS="git vim curl jq make"
 
 which $PKGS || {
     sudo apt-get update
