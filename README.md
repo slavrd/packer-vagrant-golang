@@ -6,11 +6,12 @@ A packer project that creates a Vagrant box with Golang and some basic tools ins
 
 * Install [packer](https://www.packer.io/downloads.html) version `~> 1.7`.
 * Install [vagrant](https://www.vagrantup.com/downloads.html).
-* Ruby version `~> 2.5.6` for running KitchenCI test.
+* Ruby version `~> 3.0.2` for running KitchenCI test.
 
 ## Building the box with Packer
 
-The packer template is in `template.pkr.hcl file e.g. `template.v1.6.json`. Use the appropriate template for the version of packer you have installed.
+The packer template is in `template.pkr.hcl` file. 
+For  compatibility with older packer version there are also some `JSON` templates available e.g. `template.v1.6.json`. Use the appropriate template for the version of packer you have installed.
 
 In the `variables` section you can set parameters to customize the build. Help on setting, overriding variables in packer can be found [here](https://www.packer.io/docs/templates/user-variables.html#setting-variables).
 
